@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block title %}List of pets{% endblock %}
+{%block scrum%}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Pets</li>
+  </ol>
+{%endblock%}
+
+{% block body %}
+<div class="card bg-dark">
+  <div class="card-body">
+    <h3 class="text-white">Pets &nbsp;<a href="/add" class="btn btn-sm btn-warning">Add&nbsp;<i class="fas fa-plus-circle"></i></a></h3>
+    
+  </div>
+</div>
+<br>
+
+<div class="card bg-dark">
+    <div class="card-body">
+      <h6 class="text-white">Available</h6>
+      <hr class="text-warning">
+       <div class="card-body">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            {%if pets %} 
+            {% for pet in pets %}
+            <div class="col">
+              <div class="card p-2 h-100">
+                {% if pet.photo_url != "" %}
+                  <img loading="lazy" class="card-img-top img-thumbnail p-3" alt="a"  src="{{pet.photo_url}}" />
+                {% else %}
+                  <img loading="lazy" class="card-img-top img-thumbnail p-3"  alt="avatar1" src="https://media.istockphoto.com/id/1128826884/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment.jpg?s=170667a&w=0&k=20&c=O9Y41QO7idN44o-VK5s7dBUqg-dhJZcyagMb8485BNU=" />
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{pet.name}}</h5>
+                  <p class="card-text">
+                    {% if pet.available %}
+                    <b class="text-success p-1">
+                     <small><span class="text-black">Status:&nbsp;</span>Is available&nbsp;<i  class="fas far fa-check-circle fa-lg text-success"></i></small>
+                    </b>
+                      {% else %}
+                      <b class="text-danger p-1">
+                        <small><span class="text-black">Status:&nbsp;</span>Not available&nbsp;<i  class="fas far fa-check-circle fa-lg text-danger"></i></small>
+                      </b>
+                      {% endif %}
+                  </p>
+                  <a href="/show/{{ pet.id }}" class="btn btn-sm  btn-secondary text-warning" >Show&nbsp;<i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {%else%} 
+            <div class="col-12">
+              <div class="row card-body">
+                <h2 class="card-title text-warning">No data!</h2>
+              </div>
+            </div>
+            {%endif%}
+            
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <br>
+  <div class="card bg-dark">
+    <div class="card-body">
+      <h6 class="text-white">Not available</h6>
+      <hr class="text-warning">
+       <div class="card-body">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            {%if pets_not %} 
+            {% for pet in pets_not %}
+            <div class="col">
+              <div class="card p-2 h-100">
+                {% if pet.photo_url != "" %}
+                  <img loading="lazy" class="card-img-top img-thumbnail p-3" alt="a"  src="{{pet.photo_url}}" />
+                {% else %}
+                  <img loading="lazy" class="card-img-top img-thumbnail p-3"  alt="avatar1" src="https://media.istockphoto.com/id/1128826884/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment.jpg?s=170667a&w=0&k=20&c=O9Y41QO7idN44o-VK5s7dBUqg-dhJZcyagMb8485BNU=" />
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{pet.name}}</h5>
+                  <p class="card-text">
+                    {% if pet.available %}
+                    <b class="text-success p-1">
+                     <small><span class="text-black">Status:&nbsp;</span>Is available&nbsp;<i  class="fas far fa-check-circle fa-lg text-success"></i></small>
+                    </b>
+                      {% else %}
+                      <b class="text-danger p-1">
+                        <small><span class="text-black">Status:&nbsp;</span>Not available&nbsp;<i  class="fas far fa-check-circle fa-lg text-danger"></i></small>
+                      </b>
+                      {% endif %}
+                  </p>
+                  <a href="/show/{{ pet.id }}" class="btn btn-sm  btn-secondary text-warning" >Show&nbsp;<i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {%else%} 
+            <div class="col-12">
+              <div class="row card-body">
+                <h2 class="card-title text-warning">No data!</h2>
+              </div>
+            </div>
+            {%endif%}
+            
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <br>
+{% endblock %}

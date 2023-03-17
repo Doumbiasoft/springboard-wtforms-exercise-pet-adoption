@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Edit  pet{% endblock %}
+{%block scrum%}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/">Pets</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+  </ol>
+{%endblock%}
+
+{% block body %}
+
+<h1 class=""></h1>
+<div class="card bg-dark">
+    <div class="card-body">
+        <h4 class="text-white">Edit a pet</h4>
+        <hr class="text-warning">
+        <div class="row p-3 justify-content-center text-warning">
+            <form action="/{{pet.id}}" method="POST"  enctype="multipart/form-data" class="row g-3">
+                   
+                    {% include "pets/_form_base_pet.html" %}
+                    <div>
+                        {% if pet.photo_url != "" %}
+                        <img loading="lazy" class="card-img-top img-thumbnail w-50 p-3" alt="a"  src="{{pet.photo_url}}" />
+                      {% else %}
+                        <img loading="lazy" class="card-img-top img-thumbnail  w-50 p-3"  alt="avatar1" src="https://media.istockphoto.com/id/1128826884/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment.jpg?s=170667a&w=0&k=20&c=O9Y41QO7idN44o-VK5s7dBUqg-dhJZcyagMb8485BNU=" />
+                      {% endif %}
+                    </div>
+                    {% if form.photo_url.errors %}
+                      <ul>
+                          {% for error in form.photo_url.errors %}
+                              <li>{{ error }}</li>
+                          {% endfor %}
+                      </ul>
+                    {% endif %}
+                    {% if form.photo.errors %}
+                      <ul>
+                          {% for error in form.photo.errors %}
+                              <li>{{ error }}</li>
+                          {% endfor %}
+                      </ul>
+                    {% endif %}
+                    <hr class="text-warning">
+                    <div class="col-12">
+                      <a href="/show/{{ pet.id }}" class="btn btn-sm btn-secondary">Cancel&nbsp;<i class="fas far fa-window-close"></i></a>
+                      <button type="submit" class="btn btn-warning btn-sm">Save&nbsp;<i class="fas far far fa-check-square"></i></button>
+                    </div>
+              </form>
+          </div>
+    </div>
+  </div>
+
+{% endblock %}

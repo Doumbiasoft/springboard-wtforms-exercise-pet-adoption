@@ -1,0 +1,70 @@
+{% macro render_field(field) %}
+<div class="from-group">
+    <label for="{{ field.name }}" class="form-label">{{ field.label.text }}{% if field.flags.required %}&nbsp;<span class="text-danger">*</span>{% endif %}</label>
+   {{ field(class_= 'form-control', **kwargs)}}
+   <small>
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+    {% endif %}
+   </small>
+</div>
+{% endmacro %}
+
+{% macro render_field_select_field(field) %}
+<div class="from-group">
+    <label for="{{ field.name }}" class="form-label">{{ field.label.text }}{% if field.flags.required %}&nbsp;<span class="text-danger">*</span>{% endif %}</label>
+   {{ field(class_= 'form-select', **kwargs)}}
+   <small>
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+    {% endif %}
+   </small>
+</div>
+{% endmacro %}
+
+
+{% macro render_radio_vertical_field(field) %}
+<div class="from-group">
+<label for="{{ field.name }}" class="form-label">{{ field.label.text }}{% if field.flags.required %}&nbsp;<span class="text-danger">*</span>{% endif %}</label>
+  {% for subfield in field %}
+  <div class="form-check">
+  <label class="form-check-label">
+    {{ subfield(class_= 'form-check-input', **kwargs)}}
+    {{ subfield.label.text }}
+  </label>
+</div> 
+{% endfor%}
+<small>
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+    {% endif %}
+   </small>
+</div>
+{% endmacro %}
+
+{% macro render_checkbox_vertical_field(field,header='') %}
+<div class="from-group">
+    {% if header !='' %}
+     <label class="form-label">{{ header }}{% if field.flags.required %}&nbsp;<span class="text-danger">*</span>{% endif %}</label>
+    {% endif %}
+      <div class="form-check">
+      <label class="form-check-label">
+        {{ field(class_= 'form-check-input', **kwargs)}}
+        {{ field.label.text }}
+      </label>
+    </div> 
+    <small>
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        {% endif %}
+       </small>
+    </div>
+    {% endmacro %}

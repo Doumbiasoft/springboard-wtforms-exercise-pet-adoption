@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Show details{% endblock %}
+
+{%block scrum%}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/">Pets</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Details</li>
+  </ol>
+{%endblock%}
+
+{% block body %}
+
+<div class="card p-3 bg-dark">
+    <div class="col-12">
+        <a href="/" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-circle-left"></i>&nbsp;Go home</a>
+        <a href="/{{pet.id}}" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i>&nbsp;Edit</a>
+        <a href="/{{pet.id}}/delete" class="btn btn-sm btn-danger"><i class="fas fa fas fa-trash-alt"></i>&nbsp;Delete</a>
+    </div>   
+    <hr class="text-warning">
+    <div class="card-body">
+      <h6 class="card-title"><b class="text-white">Name: </b><span class="text-warning"><span class="card-text">{{pet.name}}</span></span></h6>
+      <h6 class="card-title"><b class="text-white">Species: </b><span class="text-warning"><span class="card-text">{{pet.species}}</span></span></h6>
+      <h6 class="card-title"><b class="text-white">Age: </b><span class="text-warning"><span class="card-text">{% if pet.age %} {{pet.age}} {%else%} -- {%endif%}</span></span></h6>
+      <h6 class="card-title"><b class="text-white">Note: </b><span class="text-warning"><span class="card-text">{% if pet.notes %} {{pet.notes}} {%else%} -- {%endif%}</span></span></h6>
+      <h6 class="card-title"><b class="text-white">Status: </b><span class="text-warning"><span class="card-text">{% if pet.available %}<b class="text-success p-1">
+        <small><span class="text-black"></span>Is available&nbsp;<i  class="fas far fa-check-circle fa-lg text-success"></i></small>
+       </b> {%else%} <b class="text-danger p-1">
+        <small><span class="text-black"></span>Not available&nbsp;<i  class="fas far fa-check-circle fa-lg text-danger"></i></small>
+      </b>{%endif%}</span></span></h6>
+    </div>
+    <hr class="text-warning">
+    <div>
+      {% if pet.photo_url != "" %}
+      <img loading="lazy" class="card-img-top img-thumbnail w-50 p-3" alt="a" {%if 'http' in pet.photo_url %} src="{{pet.photo_url }}" {% else %} src="../../{{pet.photo_url }}" {%  endif %} />
+    {% else %}
+      <img loading="lazy" class="card-img-top img-thumbnail  w-50 p-3"  alt="avatar1" src="https://media.istockphoto.com/id/1128826884/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment.jpg?s=170667a&w=0&k=20&c=O9Y41QO7idN44o-VK5s7dBUqg-dhJZcyagMb8485BNU=" />
+    {% endif %}
+    </div>
+   
+  </div>
+  <br><br><br>
+
+{% endblock %}

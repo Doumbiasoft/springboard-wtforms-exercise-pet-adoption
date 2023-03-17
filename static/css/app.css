@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    background: url(../images/app/bg.jpg) no-repeat center center fixed; workbench.trust.manage
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar {
+    background-color: black;
+    overflow: hidden;
+    box-shadow: -2px -4px 8px rgb(255 255 255 / 60%), 2px 4px 8px rgb(0 0 0 / 30%);
+
+}
+.navbar ol li a {
+    text-decoration: none;
+    color: #ffc107;
+}
+ol li a {
+    color: #fd0d8a;
+    text-decoration: none;
+
+}
+ol li a:hover {
+    color: black;
+    text-decoration: none;
+  
+}
+input[type='checkbox']:checked {
+    background-color: #fd0d8a;
+    border-color: #fd0d8a;
+  }
+  input[type='radio']:checked {
+    background-color: #fd0d8a;
+    border-color: #fd0d8a;
+  }
+

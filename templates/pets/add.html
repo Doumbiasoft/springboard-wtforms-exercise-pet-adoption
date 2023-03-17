@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Add new  pet{% endblock %}
+{%block scrum%}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/">Pets</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add</li>
+  </ol>
+{%endblock%}
+
+{% block body %}
+
+<h1 class=""></h1>
+<div class="card bg-dark">
+    <div class="card-body">
+        <h4 class="text-white">Add a pet</h4>
+        <hr class="text-warning">
+        <div class="row p-3 justify-content-center text-warning">
+            <form action="/add" method="POST"  enctype="multipart/form-data" class="row g-3">
+                   
+                    {% include "pets/_form_base_pet.html" %}
+                    
+                    <hr class="text-warning">
+                    <div class="col-12">
+                      <a href="/" class="btn btn-sm btn-secondary">Cancel&nbsp;<i class="fas far fa-window-close"></i></a>
+                      <button type="submit" class="btn btn-warning btn-sm">Save&nbsp;<i class="fas far far fa-check-square"></i></button>
+                    </div>
+              </form>
+          </div>
+    </div>
+  </div>
+
+{% endblock %}

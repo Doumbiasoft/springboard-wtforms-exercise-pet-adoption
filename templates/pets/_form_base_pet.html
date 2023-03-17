@@ -1,0 +1,8 @@
+{{ form.hidden_tag()}}
+{{ render_field(form.name, placeholder = form.name.label.text) }}
+{{ render_field_select_field(form.species) }}
+{{ render_field(form.age, placeholder = form.age.label.text) }}
+{{ render_field(form.notes, placeholder = form.notes.label.text) }}
+{{ render_checkbox_vertical_field(form.available) }}
+{{ render_field(form.photo_url, placeholder = form.photo_url.label.text) }}
+{{ render_field(form.photo) }}
