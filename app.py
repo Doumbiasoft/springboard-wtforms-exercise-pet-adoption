@@ -2,7 +2,6 @@ from flask import Flask,request,render_template,redirect,url_for,flash
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, Pet
 from forms import AddPetForm,EditPetForm
-from wtforms.validators import ValidationError
 
 app = Flask(__name__)
 
@@ -10,16 +9,17 @@ app.config['SECRET_KEY'] ="azertyqwerty"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///adopt'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-with app.app_context():
-     connect_db(app)
-     db.create_all()
-
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['DEBUG_TB_INTERCEPT_REDIRECT'] = False
 app.config['TESTING'] = True
 app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
 #app.config['WTF_CSRF_ENABLED'] = False
 toolbar = DebugToolbarExtension(app)
+
+
+with app.app_context():
+     connect_db(app)
+     db.create_all()
 
 
 @app.errorhandler(404)

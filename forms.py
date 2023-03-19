@@ -14,19 +14,10 @@ class AddPetForm(FlaskForm):
     species = SelectField("Species", choices=[("", "-- --"),("cat", "Cat"), ("dog", "Dog"), ("porcupine", "Porcupine")],validators=[InputRequired()])
     age = IntegerField("Age",validators=[Optional(),NumberRange(min=0,max=30)])
     notes = StringField("Notes",validators=[Optional(), Length(min=10)])
-    #photo_url = URLField("Photo URL",validators=[Optional(), URL()])
     photo_url = StringField("Photo URL",validators=[Optional()])
     photo = FileField('Photo', validators=[Optional(), FileAllowed(file_allowed, 'Images only!')])
     available = BooleanField("Is Available")
-   
-    #def validate(self):
-    #    """Custom validation to avoid data in those two field."""
-    #    if not FlaskForm.validate(self):
-    #        return False
-    #    if self.photo_url.data and self.photo.data:
-    #        raise ValidationError('You can only provide either a URL or a photo')
-    #    return True
-
+  
     def save_photo(self):
         """Function to save photo in static folder."""
         if self.photo.data:
@@ -42,7 +33,6 @@ class EditPetForm(FlaskForm):
     species = SelectField("Species", choices=[("", "-- --"),("cat", "Cat"), ("dog", "Dog"), ("porcupine", "Porcupine")],validators=[InputRequired()])
     age = IntegerField("Age",validators=[Optional(),NumberRange(min=0,max=30)])
     notes = StringField("Notes",validators=[Optional(), Length(min=10)])
-    #photo_url = URLField("Photo URL",validators=[Optional(), URL()])
     photo_url = StringField("Photo URL",validators=[Optional()])
     photo = FileField('Photo', validators=[Optional(), FileAllowed(file_allowed, 'Images only!')])
     available = BooleanField("Is Available")
