@@ -45,8 +45,7 @@ def add_pet():
     form = AddPetForm()
 
     if form.validate_on_submit():
-        #data = {k: v for k, v in form.data.items() if k != "csrf_token"}
-        #new_pet = Pet(**data)
+    
         if form.photo_url.data and form.photo.data:
 
             flash(f"You can only provide either a photo_url or a photo!","danger")
